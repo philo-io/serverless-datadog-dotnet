@@ -1,11 +1,10 @@
 FROM public.ecr.aws/datadog/lambda-extension:29 AS datadog-extension
 
 FROM alpine:latest AS datadog-tracer
-ARG DD_TRACER_VERSION=2.15.0
 RUN apk add tar wget gzip
-RUN wget https://github.com/DataDog/dd-trace-dotnet/releases/download/v${DD_TRACER_VERSION}/datadog-dotnet-apm-${DD_TRACER_VERSION}.tar.gz
+RUN wget https://github.com/DataDog/dd-trace-dotnet/releases/download/v2.14.0/datadog-dotnet-apm-2.14.0.tar.gz
 RUN mkdir /opt/datadog
-RUN tar -C /opt/datadog -xzf datadog-dotnet-apm-${DD_TRACER_VERSION}.tar.gz
+RUN tar -C /opt/datadog -xzf datadog-dotnet-apm-2.14.0.tar.gz
 
 FROM scratch
 COPY --from=datadog-extension /opt/. /opt/
