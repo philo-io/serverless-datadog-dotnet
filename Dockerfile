@@ -6,7 +6,7 @@ RUN mkdir /opt/datadog
 COPY Project.csproj .
 RUN VERSION=$(cat Project.csproj | grep Datadog.Trace | sed 's/.*Version="\([^"]*\).*/\1/i') && \
     wget https://github.com/DataDog/dd-trace-dotnet/releases/download/v$VERSION/datadog-dotnet-apm-$VERSION.tar.gz && \
-    tar -C /opt/datadog -xzf datadog-dotnet-apm-2.14.0.tar.gz
+    tar -C /opt/datadog -xzf datadog-dotnet-apm-$VERSION.tar.gz
 
 FROM scratch
 COPY --from=datadog-extension /opt/. /opt/
