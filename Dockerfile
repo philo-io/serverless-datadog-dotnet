@@ -1,5 +1,4 @@
-ARG DD_EXTENSION_VERSION=29
-FROM public.ecr.aws/datadog/lambda-extension:$DD_EXTENSION_VERSION AS datadog-extension
+FROM public.ecr.aws/datadog/lambda-extension:29 AS datadog-extension
 
 FROM alpine:latest AS datadog-tracer
 ARG DD_TRACER_VERSION=2.15.0
